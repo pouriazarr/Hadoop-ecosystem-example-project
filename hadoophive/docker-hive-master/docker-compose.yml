@@ -12,7 +12,7 @@ services:
     ports:
       - "50070:50070"
   datanode:
-    image: docker.arvancloud.ir/bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
       - datanode:/hadoop/dfs/data
     env_file:
@@ -22,7 +22,7 @@ services:
     ports:
       - "50075:50075"
   hive-server:
-    image: docker.arvancloud.ir/bde2020/hive:2.3.2-postgresql-metastore
+    image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -31,7 +31,7 @@ services:
     ports:
       - "10000:10000"
   hive-metastore:
-    image: docker.arvancloud.ir/bde2020/hive:2.3.2-postgresql-metastore
+    image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
@@ -40,11 +40,11 @@ services:
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: docker.arvancloud.ir/bde2020/hive-metastore-postgresql:2.3.0
+    image: bde2020/hive-metastore-postgresql:2.3.0
     ports:
       - "54320:5432"
   presto-coordinator:
-    image: docker.arvancloud.ir/shawnzhu/prestodb:0.181
+    image: shawnzhu/prestodb:0.181
     ports:
       - "8080:8080"
 
